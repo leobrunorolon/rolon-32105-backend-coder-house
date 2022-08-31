@@ -10,6 +10,15 @@ app.use(express.json());
 const DB = new db("data");
 
 // * get all products
+app.get("/", async (req, res) => {
+  return res.send(`<div>
+    <h1 style="color:blue; text-align:center" >Bienvenidos a Glitch de Bruno Rolon</h1>
+  <h2 style="text-align:center">Camada: 32105</h2>
+  <img src=https://avatars.githubusercontent.com/leobrunorolon alt="BrunoRolon" width="460" height="345">
+  <a href="https://github.com/leobrunorolon/rolon-32105-backend-coder-house"><h2>Github</h2></a>
+  </div>`);
+});
+
 app.get("/products", async (req, res) => {
   const data = await DB.getAll();
   return res.send(data);
