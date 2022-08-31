@@ -1,18 +1,28 @@
 const express = require("express");
-
+const db = require("./products.js");
 const app = express();
-let contador = 0;
-app.get("/", (req, res) => {
-  res.send('<h1 style="color:blue">Bienvenido al servidor de Express</h1>');
-});
 
-app.get("/visitas", (req, res) => {
-  contador++;
-  res.send(`<h1 style="color:blue">La cantidad es de ${contador} visitas</h1>`);
-});
+// middleware https://expressjs.com/es/api.html#express.urlencoded
+app.use(express.urlencoded());
+// middleware https://expressjs.com/es/api.html#express.json
+app.use(express.json());
 
-app.get("/fyh", (req, res) => {
-  res.send({ fecha: "8/09/1990" });
+const DB = new db("data");
+
+// * get all products
+app.get("/products", async (req, res) => {
+  const data = await DB.getAll();
+  return res.send(data);
+});
+// * get products random
+app.get("/productRandom", async (req, res) => {
+  const data = await DB.getRandomProducts();
+  return res.send(`<div>
+    <h1>Title${data.title}</h1>
+    <h3>$${data.price}</h3>
+    <h3>id:${data.id}</h3>
+    <img src=${data.url} alt=${data.title} width="460" height="345">
+  </div>`);
 });
 
 // * listen
