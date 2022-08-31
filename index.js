@@ -16,6 +16,8 @@ app.get("/", async (req, res) => {
   <h2 style="text-align:center">Camada: 32105</h2>
   <img src=https://avatars.githubusercontent.com/leobrunorolon alt="BrunoRolon" width="460" height="345">
   <a href="https://github.com/leobrunorolon/rolon-32105-backend-coder-house"><h2>Github</h2></a>
+  <p>/products</p>
+  <p>/productRandom</p>
   </div>`);
 });
 
