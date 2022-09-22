@@ -1,0 +1,135 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="root.css" href="../assets/root.css">
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h1 style="color:blue; text-align:center" >Bienvenidos a Github de Bruno Rolon</h1>
+      <h2 style="text-align:center">Camada: 32105</h2>
+      <img src='https://avatars.githubusercontent.com/leobrunorolon' alt="BrunoRolon" width="300" height="300">
+      <a href="https://github.com/leobrunorolon/rolon-32105-backend-coder-house" style="text-align:center"><h2>Github</h2></a>
+    </div>
+    <div class="container text-center" style="margin-top: 50px">
+        <h2 class="s3-fs-xs-3 bg-dark text-white" style="padding: 10px">Formulario para añadir productos</h2>  
+        <form action="/products" method="POST">
+          <div class="form-group ">
+            <label >Nombre del producto</label>
+            <input name="title" type="text" class="form-control" id="name" placeholder="Ingrese el nombre del producto">
+          </div>
+
+          <div class="form-group">
+            <label >Precio del producto</label>
+            <input name="price" type="number" class="form-control" id="price" placeholder="Ingrese el Precio del producto">
+          </div>
+
+          <div class="form-group ">
+             <label >Url foto del producto</label>
+             <input name="url" type="text" class="form-control" id="url" placeholder="Ingrese URL de la foto">
+          </div>
+        <form/>
+        <div class="d-grid gap-2 col-12 d-flex justify-content-center" style="margin-top: 50px">
+          <button type="submit" class="btn btn-primary" style="width: 220px">{{addProd}}</button>
+          <button class="btn btn-primary" style="width: 220px" onclick="event.preventDefault();window.location.href='/products'">Ir a lista de productos</button>
+        </div>
+{{!-- products --}}
+      <table class="table" style="margin-top: 80px">
+        <thead>
+          <tr class="bg-dark text-white">
+            <th scope="col">#</th>
+            <th scope="col">Nombre del producto</th>
+            <th scope="col">Precio</th>
+            <th scope="col">Foto</th>
+          </tr>
+        </thead>
+        <tbody id="products">
+        </tbody>
+      </table>
+    <div class="row justify-content-center">
+
+    </div>
+{{!-- chat --}}
+    <div class="container">
+      <div class="row clearfix">
+        <div class="col-lg-12">
+          <div class="card chat-app">
+            <div class="chat">
+              <div class="chat-header clearfix">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <a
+                      href="javascript:void(0);"
+                      data-toggle="modal"
+                      data-target="#view_info"
+                    >
+                      <img src='https://avatars.githubusercontent.com/leobrunorolon' alt="avatar" width="100" height="100" >
+                    </a>
+                    <div class="chat-about">
+                      <h6 class="m-b-0">Coder</h6>
+                      <small></small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="chat-history">
+                <ul class="m-b-0" id="message">
+                  <li class="clearfix">
+                    <div class="message-data">
+                      <span class="message-data-time">[NOMBRE]</span>
+                    </div>
+                    <div class="message my-message">[TEXT]</div>
+                  </li>
+                </ul>
+              </div>
+              <form onsubmit="return enviarMensaje(this)">
+                <div class="chat-message clearfix">
+                  <div class="input-group mb-0">
+                    <div class="input-group-append">
+                      <input
+                        id="name"
+                        type="text"
+                        class="form-control"
+                        placeholder="Nombre"
+                      />
+                      <input
+                        id="chat_message"
+                        type="text"
+                        class="form-control"
+                        placeholder="Mensaje..."
+                      />
+                    </div>
+                    <input
+                      id="send_msj"
+                      type="submit"
+                      class="form-control"
+                      placeholder="Enviar mensaje"
+                    />
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    </div>
+    <script src="socket.io/socket.io.js"></script>
+    <script src="index.js"></script>
+  </body>
+
+</html>
